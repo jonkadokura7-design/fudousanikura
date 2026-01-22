@@ -1,0 +1,216 @@
+:root {
+    /* Luxury Color Palette */
+    --color-bg-dark: #0f0f13;
+    /* Deep rich black */
+    --color-bg-card: rgba(255, 255, 255, 0.05);
+    /* Glassy white */
+    --color-primary: #d4af37;
+    /* Metallic Gold */
+    --color-primary-hover: #f1c40f;
+    /* Brighter Gold */
+    --color-text-main: #f0f0f0;
+    /* Off-white text */
+    --color-text-muted: #a0a0a0;
+    /* Muted text */
+    --color-accent: #c0c0c0;
+    /* Silver accent */
+
+    --font-main: 'Zen Kaku Gothic New', sans-serif;
+    --font-display: 'Cinzel', serif;
+
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-blur: blur(10px);
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: var(--color-bg-dark);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(100, 100, 255, 0.05) 0%, transparent 20%);
+    color: var(--color-text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+    background: var(--color-bg-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+}
+
+.title-display {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.text-gold {
+    color: var(--color-primary);
+}
+
+/* App Container */
+.app-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Inputs & Buttons */
+input,
+select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), #b8860b);
+    border: none;
+    color: black;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: var(--font-main);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsive Table */
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.price-table th,
+.price-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-table th {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f0f13;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Spinner */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s ease-in-out infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #root {
+        padding-top: 20px;
+    }
+
+    .title-display {
+        font-size: 2rem !important;
+        /* Override inline style */
+    }
+
+    .app-container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .glass {
+        padding: 1rem !important;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    input,
+    select,
+    .btn-primary {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    div[style*="flex-wrap: wrap"]>div {
+        flex: 1 1 100% !important;
+        /* Stack inputs on mobile */
+    }
+}
